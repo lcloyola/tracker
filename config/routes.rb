@@ -2,7 +2,8 @@ Tracker::Application.routes.draw do
   resources :items do
     resources :units
   end
-
+  root :to => 'items#index'
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
