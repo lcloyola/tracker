@@ -3,8 +3,8 @@ class CreateUnits < ActiveRecord::Migration
     create_table :units do |t|
       t.references :item
       t.text :details
-      t.boolean :in
-      t.boolean :active
+      t.boolean :in, :default => true
+      t.boolean :active, :default => true
 
       t.timestamps
     end

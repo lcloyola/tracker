@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(:version => 20111223210220) do
   create_table "units", :force => true do |t|
     t.integer  "item_id"
     t.text     "details"
-    t.boolean  "in"
-    t.boolean  "active"
+    t.boolean  "in",         :default => true
+    t.boolean  "active",     :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
