@@ -1,4 +1,6 @@
 Tracker::Application.routes.draw do
+  resources :units
+
   resources :items
 
   # The priority is based upon order of creation:
