@@ -1,0 +1,10 @@
+%h2 Logout unit
+= form_for @unit do |f|
+  .field
+    = f.label :remarks
+    %br
+    = f.text_field :remarks
+  = f.hidden_field :in
+  .actions
+    = f.submit
+

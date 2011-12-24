@@ -68,17 +68,20 @@ class UnitsController < ApplicationController
     @item = Item.find(@unit.item_id)
     if @unit.in
       @unit[:in] = false
+      respond_to do |format|
+        format.html
+        format.json { render json: @unit }
+      end
     else
       @unit[:in] = true
-    end
-      
-    respond_to do |format|
-      if @unit.save
-        format.html { redirect_to @item, notice: 'Item status was successfully updated.' }
-        format.json { head :ok }
-      else
-        format.html { render action: "show" }
-        format.json { render json: @unit.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @unit.save
+          format.html { redirect_to @item, notice: 'Unit status was successfully updated.' }
+          format.json { head :ok }
+        else
+          format.html { render action: "show" }
+          format.json { render json: @unit.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
