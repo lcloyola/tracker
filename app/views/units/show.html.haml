@@ -1,0 +1,28 @@
+%h1= @item.name
+%h2= @unit.details
+%p
+  %b Unit ID:
+  = @unit.id
+  
+%p
+  %b Unit Details:
+  = @unit.details
+   
+- if @unit.in
+  %p
+    %b Status:
+    IN
+  %p
+    %b Remarks:
+    n/a
+  %p
+    %b= link_to "log out", toggle_unit_path(@unit)
+- else
+  %p
+    %b Status
+    OUT
+  %p
+    %b Remarks:
+    = @unit.remarks
+  %p
+  %b= link_to "log in", toggle_unit_path(@unit)

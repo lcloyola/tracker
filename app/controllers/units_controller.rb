@@ -14,7 +14,7 @@ class UnitsController < ApplicationController
   # GET /units/1.json
   def show
     @unit = Unit.find(params[:id])
-
+    @item = Item.find(@unit.item_id)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @unit }
