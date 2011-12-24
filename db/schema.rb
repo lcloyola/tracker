@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111223210220) do
+ActiveRecord::Schema.define(:version => 20111224174714) do
 
   create_table "items", :force => true do |t|
     t.string   "name"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20111223210220) do
     t.boolean  "active",     :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "remarks"
   end
 
   add_index "units", ["item_id"], :name => "index_units_on_item_id"
