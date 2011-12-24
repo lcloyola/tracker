@@ -63,6 +63,25 @@ class UnitsController < ApplicationController
     end
   end
 
+  def toggle
+    @unit = Unit.find(params[:id])
+    @item = Item.find(@unit.item_id)
+    if @unit.in
+      @unit[:in] = false
+    else
+      @unit[:in] = true
+    end
+      
+    respond_to do |format|
+      if @unit.save
+        format.html { redirect_to @item, notice: 'Item status was successfully updated.' }
+        format.json { head :ok }
+      else
+        format.html { render action: "show" }
+        format.json { render json: @unit.errors, status: :unprocessable_entity }
+      end
+    end
+  end
   # DELETE /units/1
   # DELETE /units/1.json
   def destroy

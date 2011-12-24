@@ -2,7 +2,9 @@ Tracker::Application.routes.draw do
   resources :items do
     resources :units
   end
-  resources :units
+  resources :units do
+    get 'toggle', :on => :member
+  end
   root :to => 'items#index'
 
   # The priority is based upon order of creation:

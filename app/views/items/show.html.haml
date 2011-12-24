@@ -17,16 +17,20 @@
       %th Unit ID
       %th Description
       %th Status
-      %th Action
+      %th Remarks
+      %th{:colspan => 2} Action
     - @item.units.each do |unit|
       %tr
         %td= unit.id
         %td= unit.details
-        %td
-          - if unit.in
-            IN
-          - else
-            OUT
+        - if unit.in
+          %td IN
+          %td n/a
+          %td= link_to "log out", toggle_unit_path(unit)
+        - else
+          %td OUT
+          %td= unit.remarks
+          %td= link_to "log in", toggle_unit_path(unit)
         %td= link_to 'Edit', edit_item_unit_path(@item, unit)
 %hr
 = render 'units/form'
