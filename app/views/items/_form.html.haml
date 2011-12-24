@@ -5,15 +5,14 @@
       
       %ul
         - @item.errors.full_messages.each do |msg|
-        %li= msg
-
-    .field
-      = f.label :name
-      %br
-      = f.text_field :name
-    .field
-      = f.label :details
-      %br
-      = f.text_area :details
-    .actions
-      = f.submit
+          %li= msg
+  .field
+    = f.label :name
+    %br
+    = f.text_field :name
+  .field
+    = f.label :details
+    %br
+    = f.text_area :details
+  .actions
+    = f.submit

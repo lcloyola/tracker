@@ -2,11 +2,11 @@ class UnitsController < ApplicationController
   # GET /units
   # GET /units.json
   def index
-    @units = Unit.all
+    @item = Item.find(params[:id])
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @units }
+      format.json { render json: @item }
     end
   end
 
@@ -28,39 +28,33 @@ class UnitsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @unit }
+      format.json { render json: @unit}
     end
   end
 
   # GET /units/1/edit
   def edit
     @unit = Unit.find(params[:id])
+    @item = Item.find(@unit.item_id)
   end
 
   # POST /units
   # POST /units.json
   def create
-    @unit = Unit.new(params[:unit])
-
-    respond_to do |format|
-      if @unit.save
-        format.html { redirect_to @unit, notice: 'Unit was successfully created.' }
-        format.json { render json: @unit, status: :created, location: @unit }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @unit.errors, status: :unprocessable_entity }
-      end
-    end
+    @item = Item.find(params[:item_id])
+    @unit = @item.units.create(params[:unit])
+    
+    redirect_to item_path(@item)
   end
 
   # PUT /units/1
   # PUT /units/1.json
   def update
     @unit = Unit.find(params[:id])
-
+    @item = Item.find(@unit.item_id)
     respond_to do |format|
       if @unit.update_attributes(params[:unit])
-        format.html { redirect_to @unit, notice: 'Unit was successfully updated.' }
+        format.html { redirect_to @item, notice: 'Unit was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }

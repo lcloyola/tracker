@@ -1,13 +1,32 @@
+= link_to 'Edit', edit_item_path(@item)
+= link_to 'Back', items_path
+
 %p 
   .notice
 
 %p
-  %b Name:
-  = @item.name
+  %h1= @item.name
 
 %p
   %b Details:
   = @item.details
-
-= link_to 'Edit', edit_item_path(@item)
-= link_to 'Back', items_path
+%p
+  %h4 Units:
+  %table
+    %tr
+      %th Unit ID
+      %th Description
+      %th Status
+      %th Action
+    - @item.units.each do |unit|
+      %tr
+        %td= unit.id
+        %td= unit.details
+        %td
+          - if unit.in
+            IN
+          - else
+            OUT
+        %td= link_to 'Edit', edit_item_unit_path(@item, unit)
+%hr
+= render 'units/form'

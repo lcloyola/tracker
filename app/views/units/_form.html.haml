@@ -1,0 +1,9 @@
+%h2 Add new Unit
+= form_for([@item, @item.units.build]) do |f|
+  .field
+    = f.label :details
+    %br
+    = f.text_field :details
+  .actions
+    = f.submit
+

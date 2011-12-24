@@ -1,0 +1,11 @@
+%h1 Editing unit
+= form_for(@unit) do |f|
+  .field
+    = f.label :details
+    %br
+    = f.text_field :details
+  .actions
+    = f.submit
+
+
+= link_to 'Back', item_path(@unit.item_id)
