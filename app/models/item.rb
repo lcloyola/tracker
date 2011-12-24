@@ -1,3 +1,4 @@
 class Item < ActiveRecord::Base
-  has_many :units
+  has_many :units, :dependent => :destroy
+
 end
