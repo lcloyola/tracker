@@ -11,6 +11,23 @@
 %p
   %b In:
   = @group.in
+  
+%hr
+%h2 Units in this Group
+%table
+  %tr
+    %th Unit ID
+    %th Details
+    %th Status
+  - @group.units.each do |unit|
+    %tr
+      %td= unit.id
+      %td= unit.details
+      %td
+        -if unit.in
+          IN
+        -else 
+          OUT
 
 %hr
 %h2 Edit Units
