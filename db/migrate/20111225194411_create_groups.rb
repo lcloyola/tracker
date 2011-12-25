@@ -3,7 +3,7 @@ class CreateGroups < ActiveRecord::Migration
     create_table :groups do |t|
       t.string :name
       t.text :details
-      t.boolean :in
+      t.boolean :in, :default => true
 
       t.timestamps
     end
