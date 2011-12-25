@@ -22,7 +22,7 @@ class GroupsController < ApplicationController
     end
   end
 
-  def toggle
+  def join
     @group = Group.find(params[:id])
     @unit = Unit.find(params[:format])
     

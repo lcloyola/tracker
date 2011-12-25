@@ -1,6 +1,9 @@
 Tracker::Application.routes.draw do
   resources :groups do
-    get 'toggle', :on => :member
+    member do
+      get 'join'
+      get 'toggle'
+    end
   end
 
   resources :items do

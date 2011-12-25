@@ -47,6 +47,6 @@
         -else 
           OUT
       - unless @group.unit?( unit.id )
-        %td= link_to 'Add', toggle_group_path(@group.id, unit.id)
+        %td= link_to 'Add', join_group_path(@group.id, unit.id)
       - else
-        %td= link_to 'Remove', toggle_group_path(@group.id, unit.id)
+        %td= link_to 'Remove', join_group_path(@group.id, unit.id)
