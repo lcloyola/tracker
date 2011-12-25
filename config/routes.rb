@@ -1,5 +1,7 @@
 Tracker::Application.routes.draw do
-  resources :groups
+  resources :groups do
+    get 'toggle', :on => :member
+  end
 
   resources :items do
     resources :units

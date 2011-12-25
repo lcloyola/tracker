@@ -14,11 +14,26 @@ class GroupsController < ApplicationController
   # GET /groups/1.json
   def show
     @group = Group.find(params[:id])
-
+    @units = Unit.all
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @group }
     end
+  end
+
+  def toggle
+    @group = Group.find(params[:id])
+    @unit = Unit.find(params[:format])
+    
+    unless @group.unit?(@unit.id)
+      @collection = Collection.new("group_id" => @group.id, "unit_id" => @unit.id)
+      @collection.save
+    else
+      @collection = Collection.find(@group.unit?(@unit.id))
+      @collection.destroy
+    end
+    redirect_to @group
   end
 
   # GET /groups/new

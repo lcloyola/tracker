@@ -1,8 +1,10 @@
+= link_to 'Edit', edit_group_path(@group)
+\|
+= link_to 'Back', groups_path
+
 %p#notice= notice
 
-%p
-  %b Name:
-  = @group.name
+%h1= @group.name
 %p
   %b Details:
   = @group.details
@@ -10,6 +12,24 @@
   %b In:
   = @group.in
 
-= link_to 'Edit', edit_group_path(@group)
-\|
-= link_to 'Back', groups_path
+%hr
+%h2 Edit Units
+%table
+  %tr
+    %th Unit ID
+    %th Details
+    %th Status
+    %th Action
+  - @units.each do |unit|
+    %tr
+      %td= unit.id
+      %td= unit.details
+      %td
+        -if unit.in
+          IN
+        -else 
+          OUT
+      - unless @group.unit?( unit.id )
+        %td= link_to 'Add', toggle_group_path(@group.id, unit.id)
+      - else
+        %td= link_to 'Remove', toggle_group_path(@group.id, unit.id)
