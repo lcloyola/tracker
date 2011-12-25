@@ -1,4 +1,6 @@
 Tracker::Application.routes.draw do
+  resources :groups
+
   resources :items do
     resources :units
   end
