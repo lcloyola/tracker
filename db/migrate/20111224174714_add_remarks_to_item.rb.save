@@ -1,0 +1,5 @@
+class AddRemarksToUnit < ActiveRecord::Migration
+  def change
+    add_column :it, :remarks, :text
+  end
+end
