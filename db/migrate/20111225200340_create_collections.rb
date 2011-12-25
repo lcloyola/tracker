@@ -8,5 +8,6 @@ class CreateCollections < ActiveRecord::Migration
     end
     add_index :collections, :group_id
     add_index :collections, :unit_id
+     add_index :collections, [ :group_id, :unit_id], :unique =>true
   end
 end
