@@ -1,6 +1,11 @@
 = link_to 'Edit', edit_group_path(@group)
 \|
 = link_to 'Back', groups_path
+\|
+-if @group.in
+  = link_to 'Logout', toggle_group_path(@group)
+-else
+  = link_to 'Login', toggle_group_path(@group)
 
 %p#notice= notice
 
@@ -9,8 +14,14 @@
   %b Details:
   = @group.details
 %p
-  %b In:
-  = @group.in
+  %b Status:
+  - if @group.in
+    IN
+  - else
+    OUT
+    %br
+    %b Remarks
+    =@group.remarks
   
 %hr
 %h2 Units in this Group
@@ -19,15 +30,17 @@
     %th Unit ID
     %th Details
     %th Status
+    %th Remarks
   - @group.units.each do |unit|
     %tr
       %td= unit.id
       %td= unit.details
-      %td
-        -if unit.in
-          IN
-        -else 
-          OUT
+      -if unit.in
+        %td IN
+        %td n/a
+      -else 
+        %td OUT
+        %td= unit.remarks
 
 %hr
 %h2 Edit Units

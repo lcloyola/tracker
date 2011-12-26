@@ -1,0 +1,9 @@
+%h2 Logout group of units
+= form_for @group do |f|
+  .field
+    = f.label :remarks
+    %br
+    = f.text_field :remarks
+  = f.hidden_field :in
+  .actions
+    = f.submit

@@ -35,6 +35,28 @@ class GroupsController < ApplicationController
     end
     redirect_to @group
   end
+  
+  def toggle
+    @group = Group.find(params[:id])
+    if @group[:in]
+      if all_in?
+        logout()
+        respond_to do |format|
+          format.html
+          format.json { render json: @group }
+        end
+      else
+        respond_to do |format|
+            format.html { redirect_to @group, notice: 'One or more units in this group is still out. Can\'t log out group.' }
+            format.json { head :ok }
+        end
+      end
+      
+    else  #login
+      login()
+      redirect_to @group
+    end
+  end
 
   # GET /groups/new
   # GET /groups/new.json
@@ -94,5 +116,27 @@ class GroupsController < ApplicationController
       format.html { redirect_to groups_url }
       format.json { head :ok }
     end
+  end
+private
+  def all_in?
+    return true
+  end
+
+  def logout
+    @group.units.each do |unit|
+      unit[:in] = false
+      unit[:remarks] = "logged out with group: " + @group.name
+      unit.save
+    end
+    @group[:in] = false
+    @group.save
+  end
+  def login
+    @group.units.each do |unit|
+      unit[:in] = true
+      unit.save
+    end
+    @group[:in] = true
+    @group.save
   end
 end
