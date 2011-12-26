@@ -119,6 +119,11 @@ class GroupsController < ApplicationController
   end
 private
   def all_in?
+    @group.units.each do |unit|
+      unless unit[:in]
+        return false
+      end
+    end
     return true
   end
 
