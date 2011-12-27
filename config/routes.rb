@@ -1,4 +1,6 @@
 Tracker::Application.routes.draw do
+  resources :events
+
   resources :groups do
     member do
       get 'join'
