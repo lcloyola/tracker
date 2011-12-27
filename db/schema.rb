@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111227082432) do
+ActiveRecord::Schema.define(:version => 20111227094351) do
 
   create_table "collections", :force => true do |t|
     t.integer  "group_id"
@@ -47,6 +47,17 @@ ActiveRecord::Schema.define(:version => 20111227082432) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "packages", :force => true do |t|
+    t.integer  "event_id"
+    t.integer  "group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "packages", ["event_id", "group_id"], :name => "index_packages_on_event_id_and_group_id", :unique => true
+  add_index "packages", ["event_id"], :name => "index_packages_on_event_id"
+  add_index "packages", ["group_id"], :name => "index_packages_on_group_id"
 
   create_table "units", :force => true do |t|
     t.integer  "item_id"
