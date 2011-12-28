@@ -14,7 +14,10 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     @event = Event.find(params[:id])
-
+    #TODO: check date availability
+    @units = Unit.all()
+    @groups = Group.all()
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @event }

@@ -1,8 +1,10 @@
+= link_to 'Edit', edit_event_path(@event)
+\|
+= link_to 'Back', events_path
+
 %p#notice= notice
 
-%p
-  %b Name:
-  = @event.name
+%h1= @event.name
 %p
   %b Details:
   = @event.details
@@ -13,6 +15,42 @@
   %b End:
   = @event.end
 
-= link_to 'Edit', edit_event_path(@event)
-\|
-= link_to 'Back', events_path
+%hr
+%h2 Groups reserved for this event
+- @event.groups.each do |g|
+  %table
+    %tr
+      %th Group ID
+      %th Name
+      %th Details
+      %th Units
+      %th Action
+    %tr
+      %td= g.id
+      %td= g.name
+      %td= g.details
+      %td
+        - g.units.each do |unit|
+          %br
+          = unit.id
+          = " : " + unit.details
+
+%hr
+%h2 Available groups for this events
+- @groups.each do |group|
+  -unless @event.groups.include? group
+    = group.name
+
+%hr
+%h2 Available units for this event
+%p To add these units for this event: make a new group or add them to an existing one, then add the group to this event
+
+%table
+  %tr
+    %th Unit ID
+    %th Unit Details
+  - @units.each do |unit|
+    %tr
+    - unless @event.units.include? unit
+      %td= unit.id
+      %td= unit.details
