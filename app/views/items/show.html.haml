@@ -11,7 +11,11 @@
 %p
   %b Details:
   = @item.details
+%p
+  %b Currently in:
   = @item.count_in
+  out of
+  = @item.units.count
 %p
   %h4 Units:
   %table
@@ -25,7 +29,7 @@
       %tr
         %td= unit.id
         %td= unit.details
-        - if unit.in
+        - if unit.is_in
           %td
             %b IN
           %td n/a

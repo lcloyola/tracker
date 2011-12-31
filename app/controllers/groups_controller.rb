@@ -38,7 +38,7 @@ class GroupsController < ApplicationController
   
   def toggle
     @group = Group.find(params[:id])
-    if @group[:in]
+    if @group[:is_in]
       if all_in?
         logout()
         respond_to do |format|
@@ -120,7 +120,7 @@ class GroupsController < ApplicationController
 private
   def all_in?
     @group.units.each do |unit|
-      unless unit[:in]
+      unless unit[:is_in]
         return false
       end
     end
@@ -129,19 +129,19 @@ private
 
   def logout
     @group.units.each do |unit|
-      unit[:in] = false
+      unit[:is_in] = false
       unit[:remarks] = "logged out with group: " + @group.name
       unit.save
     end
-    @group[:in] = false
+    @group[:is_in] = false
     @group.save
   end
   def login
     @group.units.each do |unit|
-      unit[:in] = true
+      unit[:is_in] = true
       unit.save
     end
-    @group[:in] = true
+    @group[:is_in] = true
     @group.save
   end
 end

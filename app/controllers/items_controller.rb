@@ -41,7 +41,7 @@ class ItemsController < ApplicationController
   # POST /items.json
   def create
     @item = Item.new(params[:item])
-    @item[:in] = false
+    @item[:is_in] = false
     @item[:active] = false
     
     respond_to do |format|

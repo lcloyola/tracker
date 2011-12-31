@@ -38,8 +38,7 @@
 %hr
 %h2 Available groups for this events
 - @groups.each do |group|
-  -unless @event.groups.include? group
-    = group.name
+  = group.name
 
 %hr
 %h2 Available units for this event

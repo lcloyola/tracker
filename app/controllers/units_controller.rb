@@ -66,14 +66,14 @@ class UnitsController < ApplicationController
   def toggle
     @unit = Unit.find(params[:id])
     @item = Item.find(@unit.item_id)
-    if @unit.in
-      @unit[:in] = false
+    if @unit.is_in
+      @unit[:is_in] = false
       respond_to do |format|
         format.html
         format.json { render json: @unit }
       end
     else
-      @unit[:in] = true
+      @unit[:is_in] = true
       respond_to do |format|
         if @unit.save
           format.html { redirect_to @item, notice: 'Unit status was successfully updated.' }

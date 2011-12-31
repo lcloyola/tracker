@@ -7,14 +7,17 @@
   %tr
     %th Name
     %th Details
-    %th Quantity
+    %th In/Out
     %th{:colspan => 3} Action
     
   - @items.each do |item|
     %tr
       %td= item.name
       %td= item.details
-      %td= item.units.count
+      %td
+        = item.count_in
+        = '/'
+        = item.units.count
       %td= link_to 'Show', item
       %td= link_to 'Edit', edit_item_path(item)
       %td= link_to 'Destroy', item, confirm: 'This will delete all its units. Are you sure?', method: :delete

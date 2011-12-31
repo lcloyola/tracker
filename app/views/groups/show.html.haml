@@ -2,7 +2,7 @@
 \|
 = link_to 'Back', groups_path
 \|
--if @group.in
+-if @group.is_in
   = link_to 'Logout', toggle_group_path(@group)
 -else
   = link_to 'Login', toggle_group_path(@group)
@@ -15,7 +15,7 @@
   = @group.details
 %p
   %b Status:
-  - if @group.in
+  - if @group.is_in
     IN
   - else
     OUT
@@ -35,7 +35,7 @@
     %tr
       %td= unit.id
       %td= unit.details
-      -if unit.in
+      -if unit.is_in
         %td IN
         %td n/a
       -else 
@@ -55,7 +55,7 @@
       %td= unit.id
       %td= unit.details
       %td
-        -if unit.in
+        -if unit.is_in
           IN
         -else 
           OUT
