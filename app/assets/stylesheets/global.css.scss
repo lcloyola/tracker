@@ -1,0 +1,74 @@
+body {
+  margin: auto;
+  width: 1000px;
+  color: #444;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px; 
+}
+
+//navbar
+#header {
+  height: 50px;
+  padding: 0;
+}
+.logo {
+  font-family: 'Patua One', cursive;
+  font-size: 33px;
+  text-shadow: 0.1em 0.1em #DDD;
+  color: #7BA343;
+  padding: 15px;
+  float: left;
+}
+#nav {
+  width: 65%;
+  float: right;
+}
+#nav ul {
+  list-style: none;
+  padding: 5px;
+  float: right;
+}
+#nav li {
+  display: inline;
+}
+#nav a, #subnav a {
+  background: #555;
+  color: #FFF;
+  margin: 20px, 10px;
+  padding: 10px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+
+.out a {
+  color: #C83838;
+}
+
+.in a {
+  color: #7BA343;
+}
+//content
+#content {
+  margin: auto;
+  background-color: #DDD;
+  padding: 30px;
+}
+
+#subnav a {
+  padding: 5px;
+  background: #888;
+}
+//tables
+table {
+  margin: auto;
+}
+th{
+  background-color: #AAA;
+  padding: 10px;
+}
+td{
+  background-color: #EEE;
+  padding: 10px;
+}

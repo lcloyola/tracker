@@ -5,10 +5,17 @@
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Patua+One' rel='stylesheet' type='text/css'>
 </head>
-<body style="background: #DDD;">
-
-<%= yield %>
-
+<body>
+<div id="header">
+  <div class="logo">Equipment Tracker</div>
+  <div id="nav">
+    <%= render '/partials/nav' %>
+  </div>
+</div>
+<div id="content">
+  <%= yield %>
+</div>
 </body>
 </html>
