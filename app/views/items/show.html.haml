@@ -11,6 +11,7 @@
 %p
   %b Details:
   = @item.details
+  = @item.count_in
 %p
   %h4 Units:
   %table
@@ -25,13 +26,14 @@
         %td= unit.id
         %td= unit.details
         - if unit.in
-          %td IN
+          %td
+            %b IN
           %td n/a
-          %td= link_to "log out", toggle_unit_path(unit)
+          %td{:class => 'out'}= link_to "log out", toggle_unit_path(unit)
         - else
           %td OUT
           %td= unit.remarks
-          %td= link_to "log in", toggle_unit_path(unit)
+          %td{:class => 'in'}= link_to "log in", toggle_unit_path(unit)
         %td= link_to 'Edit', edit_item_unit_path(@item, unit)
         %td= link_to 'Show', unit
 %hr

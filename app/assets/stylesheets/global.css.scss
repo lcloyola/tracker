@@ -9,7 +9,7 @@ body {
 
 //navbar
 #header {
-  height: 55px;
+  height: 50px;
   padding: 0;
 }
 .logo {
@@ -30,7 +30,7 @@ body {
   float: right;
 }
 #nav li {
-  display: inline
+  display: inline;
 }
 #nav a, #subnav a {
   background: #555;
@@ -41,6 +41,14 @@ body {
   text-transform: uppercase;
 }
 
+
+.out a {
+  color: #C83838;
+}
+
+.in a {
+  color: #7BA343;
+}
 //content
 #content {
   margin: auto;
